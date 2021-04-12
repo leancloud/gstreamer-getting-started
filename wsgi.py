@@ -16,20 +16,15 @@ MASTER_KEY = os.environ['LEANCLOUD_APP_MASTER_KEY']
 PORT = int(os.environ['LEANCLOUD_APP_PORT'])
 
 leancloud.init(APP_ID, app_key=APP_KEY, master_key=MASTER_KEY)
-# Set this to be True if you need to access LeanCloud services with Master Key.
+# 如果需要使用 master key 权限访问 LeanCLoud 服务，请将这里设置为 True
 leancloud.use_master_key(False)
 
-# Uncomment the following line to redirect HTTP requests to HTTPS.
-# app = leancloud.HttpsRedirectMiddleware(app)
-app = engine.wrap(app)
-application = app
+application = engine
 
-# The code below will only be executed locally (`lean up`),
-# and will not be executed on the cloud.
+
 if __name__ == '__main__':
-    
+    # 只在本地开发环境执行的代码
     from gevent.pywsgi import WSGIServer
-    from geventwebsocket.handler import WebSocketHandler
     from werkzeug.serving import run_with_reloader
     from werkzeug.debug import DebuggedApplication
 
@@ -38,7 +33,7 @@ if __name__ == '__main__':
         global application
         app.debug = True
         application = DebuggedApplication(application, evalex=True)
-        server = WSGIServer(('localhost', PORT), application, handler_class=WebSocketHandler)
+        server = WSGIServer(('0.0.0.0', PORT), application)
         server.serve_forever()
 
     run()
