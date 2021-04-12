@@ -44,7 +44,7 @@ def compressed_stream_helper(compressed_format,
     callback = BinaryFileReaderCallback(mp3_file_path)
     stream = speechsdk.audio.PullAudioInputStream(stream_format=compressed_format, pull_stream_callback=callback)
 
-    speech_config =speechsdk.SpeechConfig(subscription="这里写key", region="这里写区域")
+    speech_config =speechsdk.SpeechConfig(subscription="d3d95defb0e44170bce6c2019bc877dc", region="eastasia")
     audio_config = speechsdk.audio.AudioConfig(stream=stream)
 
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
