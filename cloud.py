@@ -76,9 +76,9 @@ def compressed_stream_helper(compressed_format,
     # </SpeechContinuousRecognitionWithFile>
 
     def pull_audio_input_stream_compressed_mp3(mp3_file_path: str):
-    # Create a compressed format
-    compressed_format = speechsdk.audio.AudioStreamFormat(compressed_stream_format=speechsdk.AudioStreamContainerFormat.MP3)
-    compressed_stream_helper(compressed_format, mp3_file_path)
+        # Create a compressed format
+        compressed_format = speechsdk.audio.AudioStreamFormat(compressed_stream_format=speechsdk.AudioStreamContainerFormat.MP3)
+        compressed_stream_helper(compressed_format, mp3_file_path)
 
 
 # @engine.before_save('Todo')
