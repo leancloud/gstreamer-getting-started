@@ -8,6 +8,7 @@ from leancloud import ACL
 from leancloud import Engine
 from leancloud import LeanEngineError
 import azure.cognitiveservices.speech as speechsdk
+import azure.cognitiveservices.speech.audio.AudioStreamFormat as AudioStreamFormat
 from app import app
 
  
@@ -113,9 +114,5 @@ def compressed_stream_helper(compressed_format,
 
 @engine.define
 def azureNewInterface(mp3Url,standardText, **params):
-   
-   
-
-   
-    return result
+   compressed_stream_helper(AudioStreamFormat(), mp3Url)
 
